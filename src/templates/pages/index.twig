@@ -14,14 +14,13 @@
       u: "blank"
     },
   } %}
-    {% include '../components/navbar.twig' %}
 
     <section class="justify-center flex-1 mx-auto p-8">
         <div class="max-w-m rounded overflow-hidden shadow-lg px-6 py-4">
             <h1 class="h1">
                 twigkit
             </h1>
-            <ul class="demo-list">
+            <ul class="list-none">
                 {% for page in pages %}
                     <li>
                         <a href="{{ page.u }}.html">{{ page.t }}</a>
@@ -31,6 +30,5 @@
         </div>
     </section>
 
-    {% include '../components/footer.twig' %}
 
 {% endblock %}
