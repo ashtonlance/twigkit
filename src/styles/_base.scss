@@ -23,7 +23,7 @@ a {
   @apply text-orange-400;
   @apply font-bold;
   @apply underline;
-  // transition: 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
 
   &:hover {
     @apply text-orange-500;
