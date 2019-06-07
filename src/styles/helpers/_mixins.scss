@@ -1,0 +1,25 @@
+// Mixins
+// ------------------------
+
+// Responsive Typography
+// "min-font-size-px" + ("max-font-size" - "min-font-size") * (100vw - "min-screen-size-px") / ("max-screen-size" - "min-screen-size")
+@mixin r-font-size($min-font, $max-font, $min-screen: 320px, $max-screen: 1200px) {
+    $responsive-calc: calc(#{px-calc($min-font)} + (#{strip-units(px-calc($max-font))} - #{strip-units(px-calc($min-font))}) * (100vw - #{px-calc($min-screen)}) / (#{strip-units(px-calc($max-screen))} - #{strip-units(px-calc($min-screen))}));
+    font-size: rem-calc($min-font);
+
+    // Min width
+    @include bp(min, rem-calc($min-screen)) {
+        font-size: $responsive-calc;
+    }
+
+    // Halfway point
+    @include bp(min, ((rem-calc($max-screen) + rem-calc($min-screen)) / 2)) {
+        font-size: (rem-calc($max-font) + rem-calc($min-font)) / 2;
+        font-size: $responsive-calc;
+    }
+
+    // Max width
+    @include bp(min, rem-calc($max-screen)) {
+        font-size: rem-calc($max-font);
+    }
+}

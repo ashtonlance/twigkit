@@ -1,0 +1,114 @@
+// Base
+// ------------------------
+
+html {
+  @apply font-sans;
+  @apply text-gray-700;
+  @apply bg-gray-100;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+hr {
+  @apply h-px;
+  @apply border-t;
+}
+
+// Typography
+// ------------------------
+a {
+  @apply text-orange-400;
+  @apply font-bold;
+  @apply underline;
+  // transition: 0.15s ease-in-out;
+
+  &:hover {
+    @apply text-orange-500;
+  }
+}
+
+p {
+  @apply mb-5;
+  @apply text-lg;
+
+  &:last-child {
+    @apply mb-0;
+  }
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  @apply font-bold;
+  @apply text-gray-800;
+}
+
+.h1 {
+  @apply text-5xl;
+  @apply leading-none;
+  @apply mb-4;
+}
+
+.h2 {
+  @apply text-3xl;
+  @apply leading-tight;
+  @apply mb-6;
+
+  @screen lg {
+    @apply text-4xl;
+  }
+}
+
+.h3 {
+  @apply text-3xl;
+  @apply leading-none;
+  @apply mb-4;
+}
+
+.h4 {
+  @apply text-xl;
+  @apply leading-tight;
+}
+
+// Forms
+// ------------------------
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  @apply w-full;
+  @apply p-2;
+  @apply border;
+  @apply bg-white;
+
+  &:hover {
+    @apply border-green-400;
+  }
+}
+
+input[type="file"] {
+  @apply text-sm;
+}
+
+textarea {
+  @apply h-32;
+}
+
+select {
+  @apply pr-8;
+  @apply rounded-none;
+  @apply bg-no-repeat;
+  @apply appearance-none;
+  background-image: svg-url(
+    '<svg width="12" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4.874 4.874L10.747 1" stroke="#00ad6a" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>'
+  );
+  background-position: right theme("spacing.2") top 50%;
+}

@@ -1,0 +1,34 @@
+{% extends '../layouts/default.twig' %}
+{% set head_title = 'Index' %}
+{% set body_class = '' %}
+
+{% block page %}
+
+  {% set pages = {
+    1: {
+      t: "Demo Page",
+      u: "demo"
+    },
+    2: {
+      t: "Blank Page",
+      u: "blank"
+    },
+  } %}
+<section class= "flex justify-center mb-4">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg px-6 py-4">
+    <h1 class="demo-title">
+      Project Name
+    </h1>
+    <p class="demo-subtitle">
+      This is the demo index page with basic styling.
+      <br>
+      It might be used to let a client preview the site.
+    </p>
+    <ul class="demo-list">
+      {% for page in pages %}
+      <li><a href="{{ page.u }}.html">{{ page.t }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

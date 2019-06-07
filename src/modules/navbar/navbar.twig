@@ -1,0 +1,51 @@
+{#
+  HTML: /modules/navbar/navbar.twig
+  CSS:  /modules/navbar/navbar.scss
+  JS:   /modules/navbar/navbar.js
+
+  States:
+
+  * Default:
+    <nav class="navbar">
+
+  * Fixed to top:
+    <nav class="navbar navbar--fixed">
+
+  * Fixed to top with "transparent animation":
+  * Navbar becomes transparent when scrolling down.
+    <nav class="navbar navbar--fixed navbar--fixed-transparent">
+
+  * Fixed to top with "show / hide animation":
+  * Navbar slides out of view when scrolling down
+  * and slides back in when scrolling up.
+    <nav class="navbar navbar--fixed navbar--fixed-toggle">
+
+  * Notes:
+  * It fires when we scroll more than 150px from to the top.
+  * You can change the value in the navbar.js
+#}
+
+  <nav class="navbar navbar--fixed navbar--fixed-transparent" data-js="navbar">
+    <div class="container">
+      <div class="navbar__wrapper">
+        <a class="navbar__brand" href="index.html">
+          Logo
+        </a>
+        <button class="navbar__toggler" role="button" data-js="navbar-toggler">
+          <span class="navbar__toggler-line"></span>
+          <span class="navbar__toggler-line"></span>
+          <span class="navbar__toggler-line"></span>
+        </button>
+        <div class="navbar__collapse">
+          <ul class="navbar__menu">
+            <li class="navbar__item{% if menu_active == 'demo-page' %} navbar__item--selected{% endif %}">
+              <a class="navbar__link" href="demo.html">Demo Page</a>
+            </li>
+            <li class="navbar__item{% if menu_active == 'blank-page' %} navbar__item--selected{% endif %}">
+              <a class="navbar__link" href="blank.html">Blank Page</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
