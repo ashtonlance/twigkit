@@ -3,7 +3,9 @@
   "version": "1.1.0",
   "description": "Front-end Boilerplate | Gulp 4 + Webpack 4 + Babel + Twig.js",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^1.2.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",

@@ -11,16 +11,38 @@ import sass from "gulp-sass";
 import sassGlob from "gulp-sass-glob";
 import sourcemaps from "gulp-sourcemaps";
 import postcss from "gulp-postcss";
-import autoprefixer from "autoprefixer";
+// import autoprefixer from "autoprefixer";
 import gulpStylelint from "gulp-stylelint";
 import errorHandler from "../util/errorHandler.js";
 import { isProd } from "../util/env.js";
-import tailwindcss from "tailwindcss";
+// import tailwindcss from "tailwindcss";
 import { reload } from "../tasks/server";
 import browserSync from "browser-sync";
 
 // Config
 import { paths } from "../config";
+
+const purgecss = require('@fullhuman/postcss-purgecss')({
+
+  // Specify the paths to all of the template files in your project 
+  content: [
+    './src/**/*.html',
+    './src/**/*.vue',
+    './src/**/*.twig',
+    // etc.
+  ],
+
+  // Include any special characters you're using in this regular expression
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+})
+
+let PostCssPlugins = [
+  // non-conditional
+  require('tailwindcss')(),
+  require('autoprefixer')(), 
+  // conditional
+  isProd ? purgecss : false
+].filter(Boolean);
 
 export function scss() {
   return src(paths.styles.src)
@@ -33,7 +55,7 @@ export function scss() {
         outputStyle: "compressed"
       })
     )
-    .pipe(postcss([tailwindcss, autoprefixer()]))
+    .pipe(postcss(PostCssPlugins))
 
     .pipe(gulpif(isProd, sourcemaps.write(".")))
     .pipe(dest(paths.styles.dest))
@@ -50,4 +72,4 @@ export function stylelint() {
   );
 }
 
-export const styles = series(stylelint, scss);
+export const styles = series(scss);
